@@ -9,16 +9,23 @@
   <div>Reversal result: <br> Before: {{stringToReverse}}<br>After: {{reverseStringResult}}</div>
 </div>
 <div>
-  <h4> Triplet Sums</h4>
+  <h3> Triplets</h3>
   <label for="integers">Integers: </label>
   <input (input)="sanitizeIntegersList()" id="integers" type="text"
          placeholder="e.g. 1,3,4,2,5" [(ngModel)]="countTripletsIntegersString">
   {{countTripletsIntegersString}}
+  <br>
+  <button (click)="checkPythagoreanTriplets()">
+    Pythagorean?
+  </button>
+  {{hasPythagoreanTriplets}}
   <br>
   <label for="tripletsSum">Triplets Sum: </label>
   <input (input)="tripletsCounts=''" id="tripletsSum" type="number" [(ngModel)]="tripletsSum">
   <button (click)="countTriplets(tripletsSum)">
     Count
   </button>
-  <div>Triplets: {{tripletsCounts}}</div>
+  <div>
+    <span>Triplets: {{tripletsCounts}}</span>&nbsp;&nbsp;&nbsp;&nbsp;
+  </div>
 </div>

@@ -14,6 +14,7 @@ export class AppComponent {
   public tripletsSum: number;
   public tripletsCounts: number;
   public countTripletsIntegersString: string = '';
+  public hasPythagoreanTriplets: boolean;
 
   constructor(private http: HttpClient) {
   }
@@ -64,8 +65,33 @@ export class AppComponent {
     );
   }
 
+  checkPythagoreanTriplets() {
+    const integers = this.countTripletsIntegersString.split(',');
+    this.http.post(
+      environment.apiUrl + '/japheth/ongeri/tulaa/pythagoreanTriplets',
+      {
+        distinctIntegers: integers,
+      },
+      {headers: new HttpHeaders({'Content-Type': 'application/json'})}
+    ).subscribe(
+      res => {
+        if (res) {
+          const data = res as any;
+          this.hasPythagoreanTriplets = data.hasPythagoreanTriplets;
+        }
+      },
+      err => {
+        console.error(err);
+      },
+      () => {
+        console.log('Done counting triplets');
+      }
+    );
+  }
+
   sanitizeIntegersList() {
     this.tripletsCounts = null;
+    this.hasPythagoreanTriplets = null;
     // this.countTripletsIntegersString = this.countTripletsIntegersString.replace(/\s/g, '');
     this.countTripletsIntegersString = this.countTripletsIntegersString.replace(/[^\d,-]/g, '');
   }
