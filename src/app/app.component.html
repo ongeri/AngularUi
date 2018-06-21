@@ -1,8 +1,24 @@
 <h3>{{title}}</h3>
-<h4 for="stringToReverse"> Reverse Text</h4>
-<input (input)="reverseStringResult=''" id="stringToReverse" type="text" [(ngModel)]="stringToReverse"
-       placeholder="Type text to reverse">
-<button (click)="reverseString(stringToReverse)">
-  Reverse
-</button>
-<div>Reversal result: <br> Before: {{stringToReverse}}<br>After: {{reverseStringResult}}</div>
+<div>
+  <h4> Reverse Text</h4>
+  <input (input)="reverseStringResult=''" id="stringToReverse" type="text" [(ngModel)]="stringToReverse"
+         placeholder="Type text to reverse">
+  <button (click)="reverseString(stringToReverse)">
+    Reverse
+  </button>
+  <div>Reversal result: <br> Before: {{stringToReverse}}<br>After: {{reverseStringResult}}</div>
+</div>
+<div>
+  <h4> Triplet Sums</h4>
+  <label for="integers">Integers: </label>
+  <input (input)="sanitizeIntegersList()" id="integers" type="text"
+         placeholder="e.g. 1,3,4,2,5" [(ngModel)]="countTripletsIntegersString">
+  {{countTripletsIntegersString}}
+  <br>
+  <label for="tripletsSum">Triplets Sum: </label>
+  <input (input)="tripletsCounts=''" id="tripletsSum" type="number" [(ngModel)]="tripletsSum">
+  <button (click)="countTriplets(tripletsSum)">
+    Count
+  </button>
+  <div>Triplets: {{tripletsCounts}}</div>
+</div>
